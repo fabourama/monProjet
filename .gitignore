@@ -1,2 +1,6 @@
-.venv7
-__pycache__
+# Ignorer l'environnement virtuel
+.venv7/
+
+# Ignorer les répertoires __pycache__ et les fichiers .pyc
+__pycache__/
+*.pyc
