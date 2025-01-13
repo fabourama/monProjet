@@ -1,27 +1,18 @@
 #!/bin/bash
 
-# Vérifier que le répertoire est fourni en argument, sinon utiliser le répertoire courant
+# Répertoire à lister (par défaut, le répertoire courant)
 directory=${1:-.}
 
-# Fichier pour la liste des fichiers
+# Fichier de sortie pour la liste des fichiers et dossiers
 output_file="file_list.txt"
 
-# Fichier .gitignore
-gitignore_file=".gitignore"
+# Lister tous les fichiers et dossiers à la racine du répertoire sans entrer dans les sous-répertoires
+echo "Listing all files and directories in $directory (without subdirectories) into $output_file..."
 
-# Lister tous les fichiers du répertoire dans un fichier texte
-echo "Listing all files in the directory $directory into $output_file..."
-find "$directory" -type f > "$output_file"
+# Utilisation de `find` avec `-maxdepth 1` pour lister uniquement les fichiers et dossiers à la racine
+find "$directory" -maxdepth 1 -print > "$output_file"
 
-# Alimenter le fichier .gitignore avec ces fichiers
-echo "Adding files from $output_file to $gitignore..."
-while IFS= read -r file; do
-    # Ajouter le fichier à .gitignore (en évitant les doublons)
-    if ! grep -q "^$file" "$gitignore_file"; then
-        echo "$file" >> "$gitignore_file"
-    fi
-done < "$output_file"
+echo "La liste des fichiers et dossiers à la racine a été enregistrée dans $output_file"
 
-echo "Process completed!"
 
-# ./list_and_ignore.sh /path/to/directory
+# ./liste_file.sh /path/to/directory
