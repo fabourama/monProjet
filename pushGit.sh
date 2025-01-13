@@ -21,7 +21,7 @@ git commit -m "$commit_message"
 
 # Configurer l'origine si elle n'est pas déjà configurée
 if ! git remote -v | grep -q "origin"; then
-    git remote add origin https://github.com/fabourama/cours.git
+    git remote add origin https://github.com/fabourama/monProjet.git
 fi
 
 # Passer à la branche principale (si ce n'est pas déjà fait)
