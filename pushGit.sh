@@ -19,10 +19,15 @@ git add .
 # Faire le commit avec le message saisi
 git commit -m "$commit_message"
 
-# Configurer l'origine si elle n'est pas déjà configurée
-if ! git remote -v | grep -q "origin"; then
-    git remote add origin https://github.com/fabourama/monProjet.git
+# Configurer l'origine : si elle existe, on la supprime puis on ajoute la nouvelle valeur
+if git remote -v | grep -q "origin"; then
+    echo "L'origine existe déjà. Suppression de l'origine existante..."
+    git remote remove origin
+    echo "Ajout de la nouvelle origine..."
 fi
+
+# Ajouter la nouvelle origine (après suppression si nécessaire)
+git remote add origin https://github.com/fabourama/monProjet.git
 
 # Passer à la branche principale (si ce n'est pas déjà fait)
 git branch -M main
