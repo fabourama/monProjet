@@ -10,6 +10,8 @@ if [ -z "$commit_message" ]; then
     exit 1
 fi
 
+cd
+cd "C:\Users\user\Desktop\FANE\OpenClassroom\monProjet"
 # Initialiser le dépôt Git (si ce n'est pas déjà fait)
 git init
 
@@ -34,3 +36,5 @@ git branch -M main
 
 # Pousser les modifications vers GitHub
 git push -u origin main
+
+echo "Push effectué avec succès ..."
