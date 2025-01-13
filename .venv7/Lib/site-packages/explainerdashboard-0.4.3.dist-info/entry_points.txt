@@ -1,0 +1,3 @@
+[console_scripts]
+explainerdashboard = explainerdashboard.cli:explainerdashboard_cli
+explainerhub = explainerdashboard.cli:explainerhub_cli
